@@ -11,8 +11,8 @@
     "build": "node scripts/check-node.mjs && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "build:github": "node scripts/check-node.mjs && VITE_BASE_PATH=/lanima/ vite build",
-    "pages:deploy": "npm run build:github && npx --yes gh-pages@6 -d dist --dotfiles"
+    "build:github": "node scripts/check-node.mjs && VITE_GH_RELATIVE=1 vite build",
+    "pages:deploy": "bash scripts/deploy-github-pages.sh"
   },
   "dependencies": {
     "react": "^19.2.5",
