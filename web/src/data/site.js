@@ -1,6 +1,7 @@
 /** @param {string} filename Nom de fichier dans public/image/ */
 export function publicImage(filename) {
-  return `/image/${encodeURIComponent(filename)}`
+  const base = import.meta.env.BASE_URL
+  return `${base}image/${encodeURIComponent(filename)}`
 }
 
 const _ = (f) => publicImage(f)
