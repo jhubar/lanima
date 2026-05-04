@@ -7,10 +7,12 @@
     "node": ">=20"
   },
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
+    "dev": "node scripts/check-node.mjs && vite",
+    "build": "node scripts/check-node.mjs && vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "build:github": "node scripts/check-node.mjs && VITE_BASE_PATH=/LANIMA/ vite build",
+    "pages:deploy": "npm run build:github && npx --yes gh-pages@6 -d dist --dotfiles"
   },
   "dependencies": {
     "react": "^19.2.5",
