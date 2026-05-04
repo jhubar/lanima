@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 # Exécuté UNIQUEMENT en local (ex. ton Mac) avant `gh-pages` envoie le dossier dist.
+# Alternative : `npm run pages:to-docs` → copie dist vers racine-du-dépôt/docs/ (réglages Pages : main + /docs).
 # GitHub Pages ne lance pas ce fichier : il ne sert que les fichiers poussés sur la branche gh-pages.
 # Le source ~/.zshrc sert à charger nvm / PATH sur une session non-interactive (terminal IDE, etc.).
 set -euo pipefail

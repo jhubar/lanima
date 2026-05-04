@@ -5,28 +5,24 @@ import path from 'node:path'
 import fs from 'node:fs'
 
 /**
- * Déploiement GitHub Pages depuis un sous-chemin (/repo/)
- * utilise une base RELATIVE `./` pour éviter erreurs selon majuscules
- * dans l’URL (/LANIMA vs /lanima).
+ * GitHub Pages (dépôt projet) : au build passer
+ *   VITE_BASE_PATH=/lanima/
+ * URL canonique du site : https://<user>.github.io/lanima/
  */
-const githubRelative = process.env.VITE_GH_RELATIVE === '1'
-
 const rawPath = process.env.VITE_BASE_PATH
-const baseFromPath =
+const base =
   rawPath != null && rawPath !== ''
     ? rawPath.endsWith('/')
       ? rawPath
       : `${rawPath}/`
-    : null
+    : '/'
 
-const base = githubRelative ? './' : baseFromPath ?? '/'
-
-/** Copie index.html vers 404.html : GitHub Pages sert ce fichier aux 404, utile ensuite si routing côté client. */
+/** Copie index → 404.html (utile sur GitHub Pages). */
 function githubPages404Fallback() {
   return {
     name: 'lanima-github-pages-404',
     closeBundle() {
-      if (!githubRelative) return
+      if (base === '/') return
       const outDir = path.resolve('dist')
       const indexHtml = path.join(outDir, 'index.html')
       const notFoundHtml = path.join(outDir, '404.html')
@@ -35,7 +31,7 @@ function githubPages404Fallback() {
           fs.copyFileSync(indexHtml, notFoundHtml)
         }
       } catch (_) {
-        // ignore copy errors in unusual envs
+        // ignore
       }
     },
   }
