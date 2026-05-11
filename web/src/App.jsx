@@ -19,8 +19,8 @@ export default function App() {
       <Navbar />
       <main>
         <Hero />
-        <About />
         <Products />
+        <About />
         <Stores />
         <Gallery />
         <VisitCTA />

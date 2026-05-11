@@ -6,7 +6,7 @@ export function About() {
     <section
       id="a-propos"
       aria-labelledby="about-heading"
-      className="border-t border-cream-200 bg-cream py-16 sm:py-24"
+      className="border-t border-cream-200 bg-cream-100 py-16 sm:py-24"
     >
       <div className="mx-auto max-w-6xl px-5 sm:px-8">
         <SectionHeading
@@ -30,7 +30,7 @@ export function About() {
               parce que l’épicerie fine, c’est aussi un lieu de vie.
             </p>
           </div>
-          <figure className="group relative overflow-hidden rounded-3xl border border-cream-200 bg-cream-100 shadow-soft">
+          <figure className="group relative overflow-hidden rounded-3xl border border-cream-200 bg-cream shadow-soft">
             <img
               src={aboutImageSrc}
               alt="Intérieur de la boutique L’Anima — épicerie fine italienne"

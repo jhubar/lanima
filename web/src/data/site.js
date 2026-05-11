@@ -6,10 +6,15 @@ export function publicImage(filename) {
 
 const _ = (f) => publicImage(f)
 
-/** Photo pleine largeur du hero */
-export const heroImageSrc = _(
-  'WhatsApp Image 2026-04-22 at 19.31.37 (7).jpeg',
-)
+/** Fichier placé à la racine de `public/` (ex. logo.svg). Respecte le base path GitHub Pages. */
+export function publicRootAsset(filename) {
+  const base = import.meta.env.BASE_URL
+  const prefix = base.endsWith('/') ? base : `${base}/`
+  return `${prefix}${filename.replace(/^\//, '')}`
+}
+
+/** Logo navbar + favicon : remplacer `public/logo.svg` par l’export Illustrator. */
+export const brandLogoSrc = publicRootAsset('logo.svg')
 
 /** Section à propos */
 export const aboutImageSrc = _(
@@ -88,46 +93,50 @@ export const galleryImages = [
   },
 ]
 
-/** @type {{ id: string; title: string; blurb: string; image: { src: string; alt: string } }[]} */
+/**
+ * Familles d’activité / d’accueil (section Produits du site — pas uniquement familles « produits »).
+ * @type {{ id: string; title: string; blurb: string; image: { src: string; alt: string; objectPosition?: string } }[]}
+ */
 export const productCategories = [
   {
-    id: 'charcuterie',
-    title: 'Charcuterie',
+    id: 'comptoir',
+    title: 'Le comptoir',
     blurb:
-      'Sélection courte des meilleures salumerie : jambon de Parme, mortadelle, saucissons et spécialités du terroir.',
+      'À la coupe, charcuterie et fromages façonnés pour vos occasions : conseils au fil des saisonnalités et des arrivages, même exigence qu’à votre table.',
     image: {
-      src: _('WhatsApp Image 2026-04-22 at 19.31.37.jpeg'),
-      alt: 'Charcuterie et salumi présentés en boutique',
+      src: _('comptoir.jpeg'),
+      alt: 'Comptoir charcuterie et fromages dans la boutique',
     },
   },
   {
-    id: 'fromages',
-    title: 'Fromages',
+    id: 'epicerie',
+    title: 'L’épicerie',
     blurb:
-      'Parmigiano Reggiano, pecorino, mozzarella di bufala et fromages affinés choisis chez de petits producteurs.',
+      'Pour parcourir les rayons : vins italiens et belges de caractère, pâtes, sauces, épicerie fine et petite cave — les indispensables avant de passer au comptoir.',
     image: {
-      src: _('WhatsApp Image 2026-04-22 at 19.31.37 (2).jpeg'),
-      alt: 'Fromages et produits laitiers italiens',
+      src: _('epicerie.jpeg'),
+      alt: 'Rayonnages épicerie fine — produits secs, conserves et petite cave',
+      objectPosition: 'center 10%',
     },
   },
   {
-    id: 'pates',
-    title: 'Pâtes artisanales',
+    id: 'traiteur',
+    title: 'Service traiteur',
     blurb:
-      'Pâtes de semoule de blé dur, formats régionaux et sauces qui honorent les recettes de famille.',
+      'Préparations sur mesure pour vos réceptions : nous regardons ensemble menu, volumes et mise en bouche avec la précision dont vous nous connaissez déjà.',
     image: {
       src: _('WhatsApp Image 2026-04-22 at 19.31.39 (3).jpeg'),
-      alt: 'Pâtes, farines et épicerie sèche',
+      alt: 'Présentations gourmandes type traiteur',
     },
   },
   {
-    id: 'vins',
-    title: 'Vins italiens',
+    id: 'plateaux',
+    title: 'Nos plateaux',
     blurb:
-      'Petites caves, grands classiques et découvertes : pour accompagner un repas ou offrir une belle bouteille.',
+      'Plateaux à emporter montés pour vous — assortiments charcuterie, fromages, antipasti, légumes confits et autres belles touches pour un apéro sans improvisation.',
     image: {
-      src: _('WhatsApp Image 2026-04-22 at 19.31.39.jpeg'),
-      alt: 'Vins et bouteilles présentées en magasin',
+      src: _('plateau.jpeg'),
+      alt: 'Plateau apéritif à composer — assortiments sur mesure',
     },
   },
 ]
