@@ -11,7 +11,8 @@
     "build": "node scripts/check-node.mjs && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "build:github": "node scripts/check-node.mjs && VITE_BASE_PATH=/lanima/ vite build",
+    "build:github": "node scripts/check-node.mjs && VITE_BASE_PATH=/ vite build",
+    "build:github-subpath": "node scripts/check-node.mjs && VITE_BASE_PATH=/lanima/ vite build",
     "pages:deploy": "bash scripts/deploy-github-pages.sh",
     "pages:to-docs": "npm run build:github && node scripts/sync-dist-to-repo-docs.mjs"
   },

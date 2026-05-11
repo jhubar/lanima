@@ -41,8 +41,11 @@ console.log(`
    • Branch : main
    • Folder : /docs  ← important (pas "/" à la racine du dépôt)
 
-3. URL (en général, nom en minuscules) :
-   https://<ton-compte>.github.io/lanima/
+3. URL après DNS + domaine personnalisé :
+   https://lanimaepicerie.be/
+
+   Prévue sans domaine GitHub : npm run build:github-subpath + URL type
+   https://<compte>.github.io/lanima/
 
 ─── Sinon (branche gh-pages uniquement) :
    npm run pages:deploy

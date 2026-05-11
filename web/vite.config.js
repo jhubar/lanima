@@ -5,9 +5,8 @@ import path from 'node:path'
 import fs from 'node:fs'
 
 /**
- * GitHub Pages (dépôt projet) : au build passer
- *   VITE_BASE_PATH=/lanima/
- * URL canonique du site : https://<user>.github.io/lanima/
+ * Build « production » Pages : passer VITE_BASE_PATH=/ pour un domaine en racine (ex. lanimaepicerie.be).
+ * Ancien préfixe dépôt seul sans domaine dédié : npm run build:github-subpath → /lanima/
  */
 const rawPath = process.env.VITE_BASE_PATH
 const base =
